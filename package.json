@@ -1,0 +1,32 @@
+{
+  "name": "espentest",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Espen Hovlandsdal <espen@bengler.no>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "test": "sanity check"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^0.118.3",
+    "@sanity/components": "^0.118.3",
+    "@sanity/core": "^0.118.0",
+    "@sanity/default-layout": "^0.118.3",
+    "@sanity/default-login": "^0.118.0",
+    "@sanity/desk-tool": "^0.118.3",
+    "@sanity/google-maps-input": "^0.118.3",
+    "react": "^15.4.2",
+    "react-autobind": "^1.0.6",
+    "react-datasheet": "^1.2.12",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.7.4"
+  }
+}
