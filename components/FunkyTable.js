@@ -44,15 +44,16 @@ export default class FunkyTable extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      !nextProps.value ||
-      !nextProps.value.grid ||
-      nextProps.value.grid === this.props.value.grid
-    ) {
+    const currentValue = this.props.value || {}
+    const nextValue = nextProps.value || {}
+    if (!nextValue || !nextValue.grid) {
+      this.setState({dataSheet: null})
       return
     }
 
-    this.setState(state => ({dataSheet: convertToDataSheet(nextProps.value.grid)}))
+    if (nextValue.grid && nextValue.grid !== currentValue.grid) {
+      this.setState(state => ({dataSheet: convertToDataSheet(nextProps.value.grid)}))
+    }
   }
 
   handleInitializeTable() {
