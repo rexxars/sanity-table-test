@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'react-autobind'
 import ReactDataSheet from 'react-datasheet'
 import styles from './FunkyTable.css'
-import PatchEvent, {set, unset, setIfMissing} from '@sanity/form-builder/PatchEvent'
+import PatchEvent, {insert, set, unset, setIfMissing} from '@sanity/form-builder/PatchEvent'
 
 const defaultNumRows = 10
 const defaultNumColums = 4
@@ -94,7 +94,10 @@ export default class FunkyTable extends Component {
     }
 
     onChange(
-      PatchEvent.from(setIfMissing({_type: type.name}), set({values: cols}, ['grid', grid.length]))
+      PatchEvent.from(
+        setIfMissing({_type: type.name}),
+        insert([{values: cols}], 'after', ['grid', -1])
+      )
     )
   }
 
@@ -112,15 +115,11 @@ export default class FunkyTable extends Component {
     const {value, type, onChange} = this.props
     const options = type.options
     const grid = value.grid
-    const newColIndex = grid[0]
-      ? grid[0].values.length
-      : options.defaultNumColumns || defaultNumColumns
-
-    const setOps = grid.map((row, i) =>
-      set(options.defaultValue || '', ['grid', i, 'values', newColIndex])
+    const insertOps = grid.map((row, i) =>
+      insert([options.defaultValue || ''], 'after', ['grid', i, 'values', -1])
     )
 
-    onChange(PatchEvent.from([setIfMissing({_type: type.name})].concat(setOps)))
+    onChange(PatchEvent.from([setIfMissing({_type: type.name})].concat(insertOps)))
   }
 
   handleRemoveColumn() {
