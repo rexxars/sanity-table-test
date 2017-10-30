@@ -1,10 +1,10 @@
-import FunkyTable from '../components/FunkyTable'
+import Table from '../components/Table'
 
 export default {
-  name: 'funkyTable',
+  name: 'table',
   title: 'Data table',
   type: 'object',
-  inputComponent: FunkyTable,
+  inputComponent: Table,
   fields: [
     {
       name: 'title',
@@ -12,14 +12,14 @@ export default {
       type: 'string'
     },
     {
-      name: 'grid',
+      name: 'rows',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
             {
-              name: 'values',
+              name: 'columns',
               type: 'array',
               of: [{type: 'string'}]
             }

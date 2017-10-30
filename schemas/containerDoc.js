@@ -12,7 +12,7 @@ export default {
     {
       name: 'productInfo',
       title: 'Product info',
-      type: 'funkyTable',
+      type: 'table',
       options: {
         defaultNumRows: 3,
         defaultNumColumns: 3

@@ -1,8 +1,8 @@
 import createSchema from 'part:@sanity/base/schema-creator'
 import containerDoc from './containerDoc'
-import funkyTable from './funkyTable'
+import table from './table'
 
 export default createSchema({
   name: 'default',
-  types: [containerDoc, funkyTable]
+  types: [containerDoc, table]
 })
